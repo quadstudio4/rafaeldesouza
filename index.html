@@ -1,946 +1,534 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael Maximo | Desenvolvedor Web Premium</title>
-    <meta name="description" content="Criação de sites profissionais, modernos e responsivos para empresas que desejam fortalecer sua presença digital e conquistar mais clientes.">
+    <title>Dr. Rafael de Souza | Advogado Criminalista em Hortolândia - SP</title>
     
-    <!-- Google Fonts: Inter para legibilidade ultra-limpa e moderna -->
+    <meta name="description" content="Defesa criminal estratégica e implacável 24h em Hortolândia e região. Especialista em flagrantes, audiência de custódia, tribunal do júri e progressão de regime.">
+    <meta name="keywords" content="Advogado Criminalista em Hortolândia, Defesa Criminal Hortolândia, Plantão de Flagrantes, Audiência de Custódia Hortolândia, Dr Marciano de Souza, Advogado Criminal 24h">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wa.me/5519982105426">
+    <meta property="og:title" content="Dr. Rafael Maximo | Advogado Criminalista 24h">
+    <meta property="og:description" content="Defesa criminal estratégica de alta performance. Atendimento de urgência e plantão de flagrantes em Hortolândia e região.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        premiumBlack: '#0B0C10',
+                        premiumDark: '#1F2833',
+                        premiumGold: '#C5A880',
+                        premiumGoldHover: '#E5C494',
+                        premiumLight: '#F4F4F6'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons (Carregamento assíncrono e leve para performance) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* ==========================================================================
-           RESET & VARIÁVEIS GERAIS (Padrão de Sistema de Design - Apple/Stripe)
-           ========================================================================== */
-        :root {
-            --bg-principal: #0B0F19;
-            --bg-secundario: #111827;
-            --bg-card: rgba(255, 255, 255, 0.03);
-            --borda-premium: rgba(255, 255, 255, 0.08);
-            --borda-hover: rgba(255, 255, 255, 0.16);
-            
-            --texto-primario: #F9FAFB;
-            --texto-secundario: #9CA3AF;
-            --texto-mutado: #6B7280;
-            
-            --accent-primary: #3B82F6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --gradiente-texto: linear-gradient(135deg, #FFFFFF 0%, #A5B4FC 100%);
-            
-            --transicao-suave: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --raio-card: 16px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-principal);
-            color: var(--texto-primario);
-            overflow-x: hidden;
-            line-height: 1.6;
+            background-color: #0B0C10;
         }
-
-        /* Utilitários de Layout */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
         }
-
-        section {
-            padding: 140px 0;
-            position: relative;
+        .gold-gradient {
+            background: linear-gradient(135deg, #C5A880 0%, #A38558 100%);
         }
-
-        /* Elementos de Brilho Abstrato (Efeito Webflow/Linear) */
-        .blur-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--accent-glow);
-            filter: blur(120px);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
+        .dark-card-gradient {
+            background: linear-gradient(145deg, #1A1F26 0%, #11141A 100%);
         }
-
-        /* Headings de Seções */
-        .secao-header {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 1;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .secao-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--accent-primary);
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: inline-block;
+        ::-webkit-scrollbar-track {
+            background: #0B0C10;
         }
-
-        .secao-titulo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: var(--gradiente-texto);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        ::-webkit-scrollbar-thumb {
+            background: #C5A880;
+            border-radius: 4px;
         }
-
-        /* ==========================================================================
-           HEADER / NAVEGAÇÃO PREMIUM
-           ========================================================================== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            background: rgba(11, 15, 25, 0.7);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--borda-premium);
-            transition: var(--transicao-suave);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: -0.03em;
-            color: var(--texto-primario);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--accent-primary);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--texto-secundario);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transicao-suave);
-        }
-
-        .nav-link:hover {
-            color: var(--texto-primario);
-        }
-
-        .cta-nav {
-            background: var(--texto-primario);
-            color: var(--bg-principal);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transicao-suave);
-        }
-
-        .cta-nav:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        /* ==========================================================================
-           SEÇÃO HERO (Psicologia de Alto Impacto em < 5s)
-           ========================================================================== */
-        #hero {
-            padding-top: 220px;
-            padding-bottom: 140px;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-conteudo {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-titulo {
-            font-size: 4.25rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.04em;
-            background: linear-gradient(180deg, #FFFFFF 0%, #C7D2FE 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 24px;
-        }
-
-        .hero-subtitulo {
-            font-size: 1.25rem;
-            color: var(--texto-secundario);
-            max-width: 680px;
-            margin: 0 auto 40px auto;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .hero-botoes {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Botões Estilo Stripe/Linear */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: var(--transicao-suave);
-            cursor: pointer;
-        }
-
-        .btn-primario {
-            background: var(--accent-primary);
-            color: white;
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-primario:hover {
-            background: #2563EB;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secundario {
-            background: transparent;
-            color: var(--texto-primario);
-            border: 1px solid var(--borda-premium);
-        }
-
-        .btn-secundario:hover {
-            border-color: var(--borda-hover);
-            background: rgba(255, 255, 255, 0.02);
-            transform: translateY(-2px);
-        }
-
-        /* ==========================================================================
-           SEÇÃO DE DIFERENCIAIS (Arquitetura de Conversão)
-           ========================================================================== */
-        .grid-diferenciais {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-diferencial {
-            background: var(--bg-card);
-            border: 1px solid var(--borda-premium);
-            border-radius: var(--raio-card);
-            padding: 40px;
-            transition: var(--transicao-suave);
-        }
-
-        .card-diferencial:hover {
-            border-color: var(--borda-hover);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-4px);
-        }
-
-        .icone-wrapper {
-            width: 48px;
-            height: 48px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            margin-bottom: 24px;
-        }
-
-        .card-titulo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            letter-spacing: -0.01em;
-        }
-
-        .card-descricao {
-            color: var(--texto-secundario);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* ==========================================================================
-           SEÇÃO DE PORTFÓLIO (Vitrine de Alto Valor - Facilmente Duplicável)
-           ========================================================================== */
-        .grid-portfolio {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .card-projeto {
-            background: var(--bg-card);
-            border: 1px solid var(--borda-premium);
-            border-radius: var(--raio-card);
-            overflow: hidden;
-            transition: var(--transicao-suave);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mockup-projeto {
-            width: 100%;
-            height: 320px;
-            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Abstração Gráfica Premium para substituir imagens genéricas temporárias */
-        .mockup-svg-placeholder {
-            width: 85%;
-            height: 80%;
-            background: #111827;
-            border-radius: 8px 8px 0 0;
-            border: 1px solid rgba(255,255,255,0.05);
-            position: absolute;
-            bottom: -20px;
-            padding: 16px;
-            transition: var(--transicao-suave);
-        }
-
-        .card-projeto:hover .mockup-svg-placeholder {
-            transform: translateY(-8px);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .projeto-info {
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .projeto-nome {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-
-        .projeto-desc {
-            color: var(--texto-secundario);
-            font-size: 0.95rem;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--texto-primario);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: var(--transicao-suave);
-        }
-
-        .btn-link i {
-            transition: var(--transicao-suave);
-        }
-
-        .btn-link:hover {
-            color: var(--accent-primary);
-        }
-
-        .btn-link:hover i {
-            transform: translateX(4px);
-        }
-
-        .card-projeto:hover {
-            border-color: var(--borda-hover);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* ==========================================================================
-           SEÇÃO SOBRE (Construção de Autoridade)
-           ========================================================================== */
-        .sobre-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .sobre-texto {
-            font-size: 1.15rem;
-            color: var(--texto-secundario);
-            line-height: 1.7;
-        }
-
-        .sobre-texto strong {
-            color: var(--texto-primario);
-            font-weight: 600;
-        }
-
-        /* Gráfico Abstrato Tecnológico de Autoridade */
-        .sobre-grafico {
-            position: relative;
-            height: 350px;
-            border: 1px solid var(--borda-premium);
-            border-radius: var(--raio-card);
-            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.05), transparent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ==========================================================================
-           SEÇÃO DE PROCESSO (Eliminação de Objeções)
-           ========================================================================== */
-        .timeline-processo {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .etapa-processo {
-            position: relative;
-            background: var(--bg-card);
-            border: 1px solid var(--borda-premium);
-            padding: 32px 24px;
-            border-radius: var(--raio-card);
-            transition: var(--transicao-suave);
-        }
-
-        .etapa-num {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            margin-bottom: 16px;
-            opacity: 0.6;
-        }
-
-        .etapa-titulo {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .etapa-desc {
-            font-size: 0.85rem;
-            color: var(--texto-secundario);
-        }
-
-        .etapa-processo:hover {
-            border-color: var(--borda-hover);
-            transform: translateY(-2px);
-        }
-
-        /* ==========================================================================
-           SEÇÃO CTA (Conversão / Fechamento de Contrato)
-           ========================================================================== */
-        .cta-box {
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(11, 15, 25, 0.8) 100%);
-            border: 1px solid var(--borda-premium);
-            border-radius: 24px;
-            padding: 80px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .cta-box .secao-titulo {
-            font-size: 3rem;
-            margin-bottom: 24px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ==========================================================================
-           RODAPÉ (Selo Final de Credibilidade)
-           ========================================================================== */
-        footer {
-            background: #070a10;
-            border-top: 1px solid var(--borda-premium);
-            padding: 60px 0 30px 0;
-            color: var(--texto-secundario);
-            font-size: 0.9rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-info h4 {
-            color: var(--texto-primario);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .footer-links-titulo {
-            color: var(--texto-primario);
-            font-weight: 600;
-            margin-bottom: 16px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--texto-secundario);
-            text-decoration: none;
-            transition: var(--transicao-suave);
-        }
-
-        .footer-links a:hover {
-            color: var(--texto-primario);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8rem;
-            color: var(--texto-mutado);
-        }
-
-        .footer-redes {
-            display: flex;
-            gap: 16px;
-        }
-
-        /* ==========================================================================
-           SISTEMA DE ANIMAÇÃO DE ENTRADA (Scroll Reveal Nascido do CSS)
-           ========================================================================== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ==========================================================================
-           RESPONSIVIDADE EXTREMA (Mobile-First / Fluid Grid)
-           ========================================================================== */
-        @media (max-width: 1024px) {
-            .hero-titulo { font-size: 3.25rem; }
-            .grid-diferenciais { grid-template-columns: repeat(2, 1fr); }
-            .timeline-processo { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        }
-
-        @media (max-width: 768px) {
-            section { padding: 80px 0; }
-            #hero { padding-top: 160px; padding-bottom: 80px; }
-            .hero-titulo { font-size: 2.5rem; }
-            .nav-menu, .cta-nav { display: none; } /* Implementação minimalista mobile */
-            .grid-diferenciais { grid-template-columns: 1fr; }
-            .grid-portfolio { grid-template-columns: 1fr; }
-            .sobre-wrapper { grid-template-columns: 1fr; gap: 40px; }
-            .timeline-processo { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        /* Glassmorphism Effect */
+        .glass-nav {
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.1);
         }
     </style>
 </head>
-<body>
+<body class="text-gray-300 antialiased overflow-x-hidden">
 
-    <!-- NAV -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">RAFAEL MAXIMO 	<span>.</span>DEV</a>
-            <ul class="nav-menu">
-                <li><a href="#diferenciais" class="nav-link">Diferenciais</a></li>
-                <li><a href="#portfolio" class="nav-link">Projetos</a></li>
-                <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#processo" class="nav-link">Processo</a></li>
-            </ul>
-            <a href="#contato" class="cta-nav">Solicitar Orçamento</a>
+    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 group" aria-label="Botão de Emergência WhatsApp">
+        <i class="fab fa-whatsapp text-3xl group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute right-20 bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap uppercase tracking-wider animate-pulse hidden md:block">
+            Plantão 24h Ativo
+        </span>
+    </a>
+
+    <header class="fixed top-0 left-0 w-full z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex flex-col">
+                <span class="font-serif-title text-xl md:text-2xl font-bold tracking-wider text-white">
+                    DR. RAFAEL DE SOUZA
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.25em] text-premiumGold font-medium">
+                    Advocacia Criminal Estratégica
+                </span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-wider font-medium">
+                <a href="#inicio" class="text-white hover:text-premiumGold transition-colors">Início</a>
+                <a href="#emergencia" class="text-red-400 hover:text-red-500 font-semibold transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Plantão 24h
+                </a>
+                <a href="#atuacao" class="text-gray-300 hover:text-premiumGold transition-colors">Atuação</a>
+                <a href="#sobre" class="text-gray-300 hover:text-premiumGold transition-colors">O Especialista</a>
+                <a href="#contato" class="text-gray-300 hover:text-premiumGold transition-colors">Contato</a>
+            </nav>
+
+            <div class="hidden lg:block">
+                <a href="https://wa.me/5519998824580" target="_blank" rel="noopener noreferrer" class="border border-premiumGold text-premiumGold hover:bg-premiumGold hover:text-premiumBlack px-5 py-2.5 rounded-sm text-xs uppercase tracking-widest font-semibold transition-all duration-300">
+                    Emergência 24h
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Abrir Menu">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-premiumBlack border-b border-premiumGold/20 px-4 pt-2 pb-6 space-y-4 text-center">
+            <a href="#inicio" class="block text-gray-300 py-2 uppercase text-sm tracking-wider">Início</a>
+            <a href="#emergencia" class="block text-red-400 font-semibold py-2 uppercase text-sm tracking-wider">Plantão 24h</a>
+            <a href="#atuacao" class="block text-gray-300 py-2 uppercase text-sm tracking-wider">Áreas de Atuação</a>
+            <a href="#sobre" class="block text-gray-300 py-2 uppercase text-sm tracking-wider">Sobre o Doutor</a>
+            <a href="#contato" class="block text-gray-300 py-2 uppercase text-sm tracking-wider">Localização & Contato</a>
+            <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="block gold-gradient text-premiumBlack font-bold py-3 rounded-sm uppercase text-xs tracking-widest">
+                Falar com Dr. Rafael
+            </a>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="blur-glow" style="top: 10%; left: 25%;"></div>
-        <div class="container hero-conteudo">
-            <h1 class="hero-titulo">Transformo ideias em websites que geram resultados.</h1>
-            <p class="hero-subtitulo">Criação de sites profissionais, modernos e responsivos para empresas que desejam fortalecer sua presença digital e conquistar mais clientes.</p>
-            <div class="hero-botoes">
-                <a href="#portfolio" class="btn btn-primario">Ver Projetos <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
-                <a href="#contato" class="btn btn-secundario">Solicitar Orçamento</a>
-            </div>
-        </div>
-    </section>
+    <section id="inicio" class="relative min-h-screen pt-24 flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: linear-gradient(rgba(11, 12, 16, 0.92), rgba(11, 12, 16, 0.95)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1920&auto=format&fit=crop');">
+        
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-premiumGold/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <!-- DIFERENCIAIS -->
-    <section id="diferenciais" class="reveal">
-        <div class="container">
-            <div class="secao-header">
-                <span class="secao-tag">Vantagens Competitivas</span>
-                <h2 class="secao-titulo">Engenharia e Design Alinhados ao Seu Negócio</h2>
-            </div>
-            <div class="grid-diferenciais">
-                <!-- Card 1 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="layers"></i></div>
-                    <h3 class="card-titulo">Design moderno e profissional</h3>
-                    <p class="card-descricao">Interfaces exclusivas desenhadas sob medida para transmitir o real valor da sua marca ao mercado.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="smartphone"></i></div>
-                    <h3 class="card-titulo">Totalmente responsivo</h3>
-                    <p class="card-descricao">Experiência impecável e fluida adaptada perfeitamente a smartphones, tablets e desktops.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="zap"></i></div>
-                    <h3 class="card-titulo">Carregamento rápido</h3>
-                    <p class="card-descricao">Desenvolvimento focado em performance, garantindo que seu cliente não espere para ver sua oferta.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="trending-up"></i></div>
-                    <h3 class="card-titulo">Foco em conversão</h3>
-                    <p class="card-descricao">Arquitetura de informação baseada em psicologia de vendas para transformar visitantes em leads.</p>
-                </div>
-                <!-- Card 5 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="smile"></i></div>
-                    <h3 class="card-titulo">Experiência otimizada</h3>
-                    <p class="card-descricao">Navegabilidade intuitiva que retém a atenção do usuário e facilita a tomada de decisão.</p>
-                </div>
-                <!-- Card 6 -->
-                <div class="card-diferencial">
-                    <div class="icone-wrapper"><i data-lucide="shield-check"></i></div>
-                    <h3 class="card-titulo">Suporte dedicado</h3>
-                    <p class="card-descricao">Acompanhamento próximo e transparente em todas as etapas, da concepção ao pós-lançamento.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTFÓLIO (ESTRUTURA LIMPA PARA ADICIONAR NOVOS FACILMENTE) -->
-<!-- PORTFÓLIO (OTIMIZADO PARA 8 PROJETOS) -->
-    <section id="portfolio" class="reveal">
-        <div class="blur-glow" style="bottom: 5%; right: 10%;"></div>
-        <div class="container">
-            <div class="secao-header">
-                <span class="secao-tag">PORTFÓLIO</span>
-                <h2 class="secao-titulo">Trabalhos Demonstrativos</h2>
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
             
-            <div class="grid-portfolio" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
-    
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/bellanona.png" alt="Landing Page BellaNona" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">BellaNona</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Landing Page para pizzaria focada em conversão.</p>
-            <a href="https://quadstudio4.github.io/bellanona/" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/burgerprime.png" alt="Landing Page Burger Prime" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Burger Prime</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Landing page minimalista de alta conversão para Hamburgueria Gourmet.</p>
-            <a href="https://quadstudio4.github.io/burgerprime/" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/advogado.png" alt="Interface Quantum SaaS" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Rafael de Souza</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Website para advogado, seguindo rigorosamente as diretrizes e regras dispostas no Código de Ética e Disciplina da OAB.</p>
-            <a href="https://quadstudio4.github.io/rafaeldesouza/" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/lumina-ecommerce.jpg" alt="Lumina E-Commerce" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Lumina E-Commerce</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Experiência de checkout ultra-rápida para marca de moda premium.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/zenite-imoveis.jpg" alt="Portal Zênite Imóveis" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Zênite Imóveis</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Portal imobiliário de alto padrão com filtros avançados e intuitivos.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/medlink-global.jpg" alt="Web App MedLink Global" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">MedLink Global</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Web app focado em agendamentos de saúde com acessibilidade nível WCAG.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/pulse-fintech.jpg" alt="Landing Page Pulse Fintech" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Pulse Fintech</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Landing page institucional para soluções de pagamento via API.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/nexus-advocacia.jpg" alt="Website Nexus Advocacia" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Nexus Advocacia</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Website focado em autoridade e captação de clientes para escritório de elite.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-    
-    <div class="card-projeto">
-        <div class="mockup-projeto" style="height: 240px; overflow: hidden;">
-            <img src="img/nexus-advocacia-v2.jpg" alt="Website Nexus Advocacia Variante" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div class="projeto-info" style="padding: 24px;">
-            <h3 class="projeto-nome" style="font-size: 1.3rem;">Nexus Advocacia</h3>
-            <p class="projeto-desc" style="font-size: 0.9rem;">Website focado em autoridade e captação de clientes para escritório de elite.</p>
-            <a href="#" class="btn-link">Acesse Aqui <i data-lucide="arrow-up-right" style="width:16px;height:16px;"></i></a>
-        </div>
-    </div>
-
-</div>
-
-    <!-- SOBRE -->
-    <section id="sobre" class="reveal">
-        <div class="container">
-            <div class="sobre-wrapper">
-                <div>
-                    <span class="secao-tag">Sobre Mim</span>
-                    <h2 class="secao-titulo" style="margin-bottom: 24px; text-align: left;">Sólida experiência em engenharia digital.</h2>
-                    <p class="sobre-texto">
-                        Sou desenvolvedor web especializado na criação de sites modernos, rápidos e responsivos. Meu objetivo é ajudar empresas e profissionais a <strong>fortalecer sua presença digital através de websites que transmitem credibilidade, profissionalismo e confiança</strong>. Combinando código limpo, design intuitivo e estratégias de conversão, transformo suas necessidades comerciais em ativos digitais de alto rendimento.
-                    </p>
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+                <div class="inline-flex items-center gap-2 px-3 py-1 border border-premiumGold/30 rounded-full bg-premiumGold/5 text-premiumGold text-xs uppercase tracking-widest font-medium">
+                    <i class="fas fa-gavel text-[10px]"></i> Defesa Criminal de Alta Performance
                 </div>
-                <div class="sobre-grafico">
-                    <!-- Elemento visual abstrato que emana sofisticação técnica -->
-                    <div style="position: absolute; border: 1px solid rgba(255,255,255,0.05); width: 80%; height: 80%; border-radius: 50%; display:flex; align-items:center; justify-content:center;">
-                        <div style="border: 1px dashed rgba(59, 130, 246, 0.2); width: 70%; height: 70%; border-radius: 50%; display:flex; align-items:center; justify-content:center;">
-                            <i data-lucide="code-2" style="width:40px; height:40px; color: var(--accent-primary);"></i>
-                        </div>
+                
+                <h1 class="font-serif-title text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    Defesa Criminal Estratégica e Resposta Rápida <span class="text-premiumGold">24h</span> em Hortolândia e Região
+                </h1>
+                
+                <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    Quando a liberdade ou a reputação estão em risco, cada minuto conta. Atuação técnica, ágil e intransigente na garantia dos seus direitos constitucionais em qualquer cenário jurídico complexo.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="https://wa.me/5519998824580" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center gold-gradient hover:bg-premiumGoldHover text-premiumBlack font-bold uppercase text-xs tracking-widest px-8 py-4 rounded-sm shadow-xl hover:shadow-premiumGold/20 transition-all duration-300 transform hover:-translate-y-0.5">
+                        <i class="fab fa-whatsapp mr-2 text-sm"></i> Falar com Especialista no WhatsApp
+                    </a>
+                    <a href="#atuacao" class="w-full sm:w-auto text-center border border-gray-600 hover:border-premiumGold text-gray-300 hover:text-white uppercase text-xs tracking-widest px-8 py-4 rounded-sm transition-all duration-300">
+                        Conhecer Áreas de Atuação
+                    </a>
+                </div>
+
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-800 max-w-md mx-auto lg:mx-0">
+                    <div>
+                        <div class="text-premiumGold font-serif-title text-2xl font-bold">100%</div>
+                        <div class="text-[10px] uppercase tracking-wider text-gray-500">Sigilo Absoluto</div>
+                    </div>
+                    <div>
+                        <div class="text-premiumGold font-serif-title text-2xl font-bold">24H</div>
+                        <div class="text-[10px] uppercase tracking-wider text-gray-500">Pronto Atendimento</div>
+                    </div>
+                    <div>
+                        <div class="text-premiumGold font-serif-title text-2xl font-bold">Foco</div>
+                        <div class="text-[10px] uppercase tracking-wider text-gray-500">Direito Criminal</div>
                     </div>
                 </div>
             </div>
+
+            <div class="lg:col-span-5 flex justify-center relative" data-aos="fade-left" data-aos-duration="1000">
+                <div class="relative w-full max-w-[380px] aspect-[4/5] rounded-sm overflow-hidden border-2 border-premiumGold/20 shadow-2xl group">
+                    <div class="absolute inset-0 bg-gradient-to-t from-premiumBlack via-transparent to-transparent z-10 opacity-60"></div>
+                    <img src="https://i.pinimg.com/736x/5a/a0/73/5aa073e8c8e56828018b1306a0da391f.jpg" 
+                         alt="Dr. Marciano de Souza - Advogado Criminalista" 
+                         loading="lazy"
+                         class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    
+                    <div class="absolute bottom-0 left-0 w-full p-6 z-20 bg-gradient-to-t from-premiumBlack to-transparent">
+                        <p class="font-serif-title text-xl font-bold text-white tracking-wide">Dr. Rafael de Souza</p>
+                        <p class="text-xs uppercase text-premiumGold tracking-widest mt-1">Advogado Criminalista | OAB/SP</p>
+                    </div>
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-full h-full border border-premiumGold/10 rounded-sm -z-10 pointer-events-none"></div>
+            </div>
+
         </div>
     </section>
 
-    <!-- PROCESSO -->
-    <section id="processo" class="reveal">
-        <div class="container">
-            <div class="secao-header">
-                <span class="secao-tag">Metodologia</span>
-                <h2 class="secao-titulo">Como Construímos Sua Presença Online</h2>
-            </div>
-            <div class="timeline-processo">
-                <!-- 1 -->
-                <div class="etapa-processo">
-                    <div class="etapa-num">01 / INVESTIGAÇÃO</div>
-                    <h3 class="etapa-titulo">Briefing</h3>
-                    <p class="etapa-desc">Alinhamento de objetivos comerciais e análise profunda de mercado.</p>
-                </div>
-                <!-- 2 -->
-                <div class="etapa-processo">
-                    <div class="etapa-num">02 / ARQUITETURA</div>
-                    <h3 class="etapa-titulo">Planejamento</h3>
-                    <p class="etapa-desc">Estruturação de wireframes e mapeamento da jornada do usuário.</p>
-                </div>
-                <!-- 3 -->
-                <div class="etapa-processo">
-                    <div class="etapa-num">03 / PRODUÇÃO</div>
-                    <h3 class="etapa-titulo">Desenvolvimento</h3>
-                    <p class="etapa-desc">Transformação do design em código limpo, rápido e otimizado para SEO.</p>
-                </div>
-                <!-- 4 -->
-                <div class="etapa-processo">
-                    <div class="etapa-num">04 / QUALIDADE</div>
-                    <h3 class="etapa-titulo">Revisões</h3>
-                    <p class="etapa-desc">Ajustes minuciosos e testes em múltiplos dispositivos e telas.</p>
-                </div>
-                <!-- 5 -->
-                <div class="etapa-processo">
-                    <div class="etapa-num">05 / SUCESSO</div>
-                    <h3 class="etapa-titulo">Entrega</h3>
-                    <p class="etapa-desc">Lançamento oficial do seu novo canal de aquisição de clientes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA CHAMADA PARA AÇÃO -->
-    <section id="contato" class="reveal">
-        <div class="container">
-            <div class="cta-box">
-                <div class="blur-glow" style="top: -50%; left: 30%;"></div>
-                <h2 class="secao-titulo">Pronto para ter um site profissional que valoriza sua empresa?</h2>
-                <p class="hero-subtitulo" style="margin-bottom: 32px;">Vamos construir juntos uma solução digital que transmita autoridade e impulsione seus resultados.</p>
-                <!-- Link direto integrado ao ecossistema de conversão -->
-                <a href="https://wa.me/5519982105426" target="_blank" class="btn btn-primario" style="padding: 16px 40px; font-size: 1rem;">
-                    <i data-lucide="message-square"></i> Iniciar Projeto via WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- RODAPÉ -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-info">
-                    <h4>RAFAELMAXIMO.DEV</h4>
-                    <p style="font-size: 0.85rem; color: var(--texto-mutado); max-width: 320px;">Desenvolvimento de interfaces digitais premium sob medida para marcas de alto valor.</p>
-                </div>
-                <div>
-                    <h5 class="footer-links-titulo">Serviços</h5>
-                    <ul class="footer-links">
-                        <li>Desenvolvedor Web</li>
-                        <li>UI/UX Design</li>
-                        <li>Otimização de Conversão</li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="footer-links-titulo">Contato Direto</h5>
-                    <ul class="footer-links">
-                        <li><a href="mailto:contato@seudominio.com">rafaelmaximodev@gmail.com</a></li>
-                        <li><a href="https://wa.me/5519982105426">WhatsApp</a></li>
-                    </ul>
-                </div>
+    <section id="emergencia" class="bg-gradient-to-r from-red-950/40 via-premiumBlack to-red-950/40 border-y border-red-900/30 py-16 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in" data-aos-duration="800">
+            <div class="inline-flex items-center gap-2 text-red-500 font-bold uppercase tracking-widest text-xs mb-3 animate-pulse">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-600"></span> PLANTÃO CRUCIAL DE EMERGÊNCIA 24 HORAS
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2026 RAFAELMAXIMO.DEV. Todos os direitos reservados. Interfaces de Alta Performance.</p>
-                <div class="footer-redes">
-                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
-                    <a href="#" aria-label="GitHub"><i data-lucide="github" style="width:18px;height:18px;"></i></a>
+            <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-white mb-6">
+                Prisões em Flagrante e Audiências de Custódia
+            </h2>
+            
+            <p class="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8 font-light">
+                Se você ou um familiar foi detido ou intimado para depor neste exato momento, <strong class="text-red-400 font-medium">Não preste depoimento sem a presença de um especialista.</strong> Erros cometidos na delegacia podem custar a liberdade permanentemente. O Dr. Marciano de Souza realiza intervenções imediatas em qualquer horário.
+            </p>
+
+            <div class="inline-block group">
+                <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="flex flex-col sm:flex-row items-center justify-center gap-4 bg-red-700 hover:bg-red-600 text-white font-bold uppercase text-sm tracking-widest px-8 py-5 rounded-sm shadow-2xl transition-all duration-300">
+                    <span><i class="fas fa-shield-alt mr-2"></i> ACIONAR DEFESA CRIMINAL AGORA</span>
+                    <span class="text-xs sm:text-sm bg-black/30 px-3 py-1 rounded-sm text-red-200 border border-red-500/20 font-mono tracking-normal">(19) 99882-4580</span>
+                </a>
+            </div>
+            
+            <p class="text-xs text-gray-500 mt-4 uppercase tracking-wider">Disponibilidade total em Hortolândia, Sumaré, Campinas e Região Metropolitana.</p>
+        </div>
+    </section>
+
+    <section id="atuacao" class="py-24 bg-premiumBlack relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <span class="text-premiumGold text-xs uppercase tracking-widest font-semibold block mb-3">Serviços Especializados</span>
+                <h2 class="font-serif-title text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+                    Defesa Estratégica em Todas as Vertentes Criminais
+                </h2>
+                <div class="w-16 h-[2px] bg-premiumGold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-balance-scale text-xl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Atendimento em Delegacias 24h
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Acompanhamento imediato em autos de prisão em flagrante, registros de ocorrência e interrogatórios. Proteção absoluta contra abusos e garantia de direitos desde o primeiro contato policial.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Solicitar Assistência <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-gavel textxl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Audiência de Custódia e Flagrantes
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Atuação cirúrgica em até 24 horas após a prisão para buscar o relaxamento da prisão ilegal ou a concessão de liberdade provisória, evitando o ingresso desnecessário no sistema prisional.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Garantir Defesa <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-user-shield text-xl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Lei Maria da Penha / Protetivas
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Defesa técnica focada na revogação ou adequação de Medidas Protetivas de Urgência, acompanhamento em inquéritos policiais e processos decorrentes de violência doméstica com o devido equilíbrio e rigor técnico.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Consultar Especialista <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Tribunal do Júri Popular
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Atuação especializada e de altíssima complexidade na defesa de crimes dolosos contra a vida. Sustentação oral vigorosa, análise minuciosa de provas e preparação completa para o julgamento em plenário.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Contratar Defesa <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-capsules text-xl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Defesa em Tráfico de Drogas
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Estratégias para desclassificação da conduta, teses de ilegalidade em invasão domiciliar, pedido de liberdade e aplicação do tráfico privilegiado para redução drástica de potenciais penas.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Analisar Caso <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+                <article class="dark-card-gradient p-8 rounded-sm border border-gray-800 hover:border-premiumGold/40 transition-all duration-500 group transform hover:-translate-y-2 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="w-12 h-12 rounded-sm border border-premiumGold/30 flex items-center justify-center text-premiumGold mb-6 group-hover:bg-premiumGold group-hover:text-premiumBlack transition-all duration-500">
+                            <i class="fas fa-file-alt text-xl"></i>
+                        </div>
+                        <h3 class="font-serif-title text-xl font-bold text-white mb-3 group-hover:text-premiumGold transition-colors">
+                            Execução Penal e Indulto
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed font-light">
+                            Garantia de direitos de quem já cumpre pena: cálculo exato para Progressão de Regime (Semiaberto/Aberto), Livramento Condicional, saídas temporárias, remição de pena e pedidos de Indulto.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="mt-8 text-xs text-premiumGold uppercase tracking-widest font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
+                        Pedir Progressão <i class="fas fa-arrow-right text-[10px]"></i>
+                    </a>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="sobre" class="py-24 bg-premiumDark relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 order-2 lg:order-1" data-aos="fade-right">
+                    <div class="relative max-w-sm mx-auto">
+                        <div class="absolute inset-0 bg-premiumGold/10 rounded-sm translate-x-4 translate-y-4 -z-10"></div>
+                        <img src="https://www.adufg.org.br/images/camara-aprova-medidas-para-coibir-golpe-do-falso-advogado-0.jpg" 
+                             alt="Dr. Rafael de Souza em atendimento" 
+                             loading="lazy"
+                             class="w-full h-auto rounded-sm object-cover border border-premiumGold/20 shadow-2xl">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6" data-aos="fade-left">
+                    <span class="text-premiumGold text-xs uppercase tracking-widest font-semibold block">Atrás da Defesa Constitucional</span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-white">
+                        Compromisso Inabalável com a tica, a Liberdade e os Seus Direitos
+                    </h2>
+                    <div class="w-12 h-[2px] bg-premiumGold my-4"></div>
+                    
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
+                        O **Dr. Rafael de Souza** consolidou sua carreira na advocacia criminal com base em pilares inegociáveis: dedicação exclusiva ao cliente, excelência técnica e agilidade no cumprimento da lei. Sediado estrategicamente em Hortolândia - SP, compreende que o Direito Penal exige inteligência analítica combinada com uma postura combativa imediata.
+                    </p>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
+                        Cada processo é tratado de forma artesanal, analisando minuciosamente as brechas processuais, nulidades em investigações policiais e inconsistências de acusações para construir uma linha de defesa sólida e vitoriosa.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-premiumGold mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold">Atuação Customizada</h4>
+                                <p class="text-gray-400 text-xs mt-0.5">Sem soluções genéricas. Seu caso é estudado de forma minuciosa.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-premiumGold mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold">Transparência Concreta</h4>
+                                <p class="text-gray-400 text-xs mt-0.5">Acesso direto ao advogado e atualizações reais sobre o andamento processual.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <a href="https://www.instagram.com/quadstudio.br/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm text-white hover:text-premiumGold font-medium border-b border-white/20 hover:border-premiumGold pb-1 transition-all">
+                            <i class="fab fa-instagram"></i> Acompanhe a atuação no Instagram <i class="fas fa-external-link-alt text-[10px] ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-premiumBlack relative border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-5 space-y-8" data-aos="fade-right">
+                    <div>
+                        <span class="text-premiumGold text-xs uppercase tracking-widest font-semibold block mb-2">Contato Direto</span>
+                        <h2 class="font-serif-title text-3xl font-bold text-white">Agende uma Consulta Prévia</h2>
+                        <div class="w-12 h-[2px] bg-premiumGold mt-4"></div>
+                    </div>
+
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">
+                        Atendimento com hora marcada em escritório físico estruturado com total discrição, ou conferência digital imediata e segura para urgências processuais.
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center gap-4 p-4 dark-card-gradient border border-gray-800 rounded-sm">
+                            <div class="text-premiumGold text-xl w-6 text-center"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <p class="text-white font-medium">Escritório Presencial</p>
+                                <p class="text-gray-400 text-xs mt-0.5">Hortolândia - SP (Centro)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 dark-card-gradient border border-gray-800 rounded-sm">
+                            <div class="text-premiumGold text-xl w-6 text-center"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <p class="text-white font-medium">WhatsApp Plantão</p>
+                                <p class="text-gray-400 text-xs mt-0.5">(19) 98210-5426</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 dark-card-gradient border border-gray-800 rounded-sm">
+                            <div class="text-premiumGold text-xl w-6 text-center"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <p class="text-white font-medium">Instagram Profissional</p>
+                                <p class="text-gray-400 text-xs mt-0.5">@quadstudio.br</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="w-full inline-block text-center gold-gradient text-premiumBlack font-bold uppercase text-xs tracking-widest py-4 rounded-sm hover:bg-premiumGoldHover transition-colors shadow-lg shadow-premiumGold/10">
+                            Iniciar Análise de Caso via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+   <div class="lg:col-span-7" data-aos="fade-left">
+    <div class="w-full h-[400px] lg:h-full min-h-[400px] rounded-sm overflow-hidden border border-gray-800 shadow-2xl relative">
+        <iframe 
+            src="" 
+            class="absolute inset-0 w-full h-full border-0 grayscale invert opacity-85" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa de Localizao Hortolndia SP">
+        </iframe>
+    </div>
+</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-premiumBlack border-t border-gray-900 py-12 text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-gray-900 pb-8 mb-8">
+                
+                <div class="text-center md:text-left">
+                    <p class="font-serif-title text-base font-bold text-white tracking-wider">DR. RAFAEL DE SOUZA</p>
+                    <p class="text-[10px] uppercase text-premiumGold tracking-widest mt-1">Advocacia Criminal Especializada</p>
+                </div>
+
+                <div class="flex items-center space-x-6 text-lg">
+                    <a href="https://wa.me/5519982105426" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-premiumGold transition-colors" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/quadstudio.br/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-premiumGold transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 text-center lg:text-left">
+                <div class="space-y-1 max-w-2xl">
+                    <p>&copy; 2026 Feito por Rafael Maximo. Site demonstrativo. </p>
+                    <p class="text-[11px] text-gray-600">Este site segue rigorosamente as diretrizes e regras dispostas no Código de tica e Disciplina da Ordem dos Advogados do Brasil (OAB), possuindo caráter estritamente informativo e institucional.</p>
+                </div>
+                <div class="text-[10px] uppercase tracking-wider text-gray-600">
+                    Desenvolvido com Padrão de Elite
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- LÓGICA DE INTERAÇÃO E ANIMAÇÃO NATIVA -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializa os ícones do Lucide de forma otimizada
-        lucide.createIcons();
+        // Inicialização de Animações de Scroll
+        AOS.init({
+            once: true,
+            offset: 100
+        });
 
-        // Engine de Scroll Reveal (Animações suaves de entrada baseadas no viewport)
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 100; // Trigger de segurança para disparar a animação
+        // Controle do Menu de Navegação Responsivo (Mobile)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fas fa-bars text-2xl';
+            } else {
+                icon.className = 'fas fa-times text-2xl';
             }
-        }
+        });
 
-        window.addEventListener("scroll", reveal);
-        // Execução inicial para elementos que já estão na tela ao carregar
-        window.addEventListener("load", reveal);
+        // Fechar menu mobile ao clicar em links
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.querySelector('i').className = 'fas fa-bars text-2xl';
+            });
+        });
+
+        // Efeito Dinâmico na Navbar dependendo do Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-1', 'shadow-2xl');
+                header.classList.remove('py-0');
+            } else {
+                header.classList.remove('py-1', 'shadow-2xl');
+            }
+        });
     </script>
 </body>
 </html>
